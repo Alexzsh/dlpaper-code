@@ -55,8 +55,8 @@ $$Attention(Q,K,V) = softmax(\frac {{QK}^T} {\sqrt{d_k}})V$$
 + `multi-head attention`允许模型考虑不同位置的不同特征子空间的信息，如果只有一个Attention head ，做平均化时会削弱结果。
 $$
 \begin{align}
-MultiHead(Q,K,V) =& Concat(head_1,{\ldots},head_h)W^O \\
-where head_i =& Attention(QW^Q_i,KW_i^K,VW^V_i)
+MultiHead(Q,K,V) &= Concat(head_1,{\ldots},head_h)W^O \\\\
+where head_i &= Attention(QW^Q_i,KW_i^K,VW^V_i)
 \end{align}
 $$
 其中,$W^Q_i\in R^{d_{model}xd_k}$,$W^K_i\in R^{d_{model}xd_k}$,$W^V_i\in R^{d_{model}xd_v}$,$W^O\in R^{hd_v*d_{model}}$  
@@ -76,7 +76,7 @@ $$FFN(x) = max(0, xW_1 + b_1)W_2 + b_2$$
 
 
 ####3.4 嵌入和Softmax
-与其他序列转导模型类似，我们使用学习到的词嵌入向量将输入输出词符转换为维度为$d_{model}的向量。 我们还使用普通的线性变换和softmax函数将解码器输出转换为下一个词符的预测概率。  
+与其他序列转导模型类似，我们使用学习到的词嵌入向量将输入输出词符转换为维度为 $d_{model}$ 的向量。 我们还使用普通的线性变换和softmax函数将解码器输出转换为下一个词符的预测概率。  
 
 在我们的模型中，两个嵌入层之间和`pre-softmax`线性变换共享相同的权重矩阵。 在嵌入层中，我们将这些权重乘以 $\sqrt{d_{model}}$ 。
 

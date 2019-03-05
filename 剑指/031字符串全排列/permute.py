@@ -6,12 +6,12 @@ class Solution(object):
         :rtype: List[List[int]]
         """
 
-        if len(nums)==0:
+        if len(nums) == 0:
             return []
         res = []
         self.dfs(nums, res, '')
         return sorted(list(set(res)))
-        
+
     def dfs(self, nums, res, path):
         if not nums:
             res.append(path)
